@@ -1,2 +1,2 @@
 # belajar
-belajar aja dulu
+ayam geprek itu enak, tapi kalo dialisya tambah mahal, geprek pemda 
