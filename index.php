@@ -5,7 +5,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>PrintPro - Jasa Percetakan</title>
+    <title>Berry Printing - Jasa Percetakan</title>
     <style>
         body {font-family: Arial; margin:0; background:#f4f4f4;}
         header {background:#1e3a8a; color:white; padding:20px; text-align:center;}
@@ -22,7 +22,7 @@
 <body>
 
 <header>
-    <h1>PrintPro</h1>
+    <h1>Berry Printing</h1>
     <p>Solusi Percetakan Profesional</p>
 </header>
 
@@ -36,17 +36,26 @@
 <div class="container">
     <div class="card">
         <h2>Tentang Kami</h2>
-        <p>Kami menyediakan jasa percetakan seperti banner, brosur, kartu nama, dan lainnya dengan kualitas terbaik.</p>
+        <p>Kami menyediakan jasa printingan yang berkualitas tinggi dan layanan pelanggan yang terbaik.</p>
     </div>
 
     <div class="card" id="layanan">
         <h2>Layanan Kami</h2>
         <ul>
-            <li>Cetak Banner</li>
-            <li>Brosur & Flyer</li>
+            <li>Print Dokumen</li>
+            <li>Print Kertas A3</li>
             <li>Kartu Nama</li>
-            <li>Undangan</li>
+            <li>Jilid</li>
+            <li>Desain Grafis</li>
+            <li>Print Foto</li>
+            <li>Dan masih banyak lagi...</li>
         </ul>
+        <h2> Barang produk yang kami sediakan</h2>
+        <ul>
+            <li>Alat-alat tulis Mahasiswa</li>
+            <li>Alat Praktikum</li>
+            <li>Bahan-bahan untuk prakarya</li>
+            <li>Dan masih banyak lagi...</li>
     </div>
 
     <div class="card" id="pesan">
@@ -71,13 +80,13 @@
 
     <div class="card" id="kontak">
         <h2>Kontak</h2>
-        <p>Email: printpro@email.com</p>
-        <p>Telp: 08123456789</p>
+        <p>Email: sainaadongdo@gmail.com</p>
+        <p>Telp: 085768733097</p>
     </div>
 </div>
 
 <footer>
-    <p>© 2026 PrintPro</p>
+    <p>© 2026 Berry Printing</p>
 </footer>
 
 </body>
