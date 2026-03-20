@@ -1,3 +1,7 @@
+<$uploadDir = 'uploads/'; 
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0755, true);
+}?>
 <?php
 // index.php - Website sederhana perusahaan printing
 ?>
@@ -56,24 +60,51 @@
             <li>Alat Praktikum</li>
             <li>Bahan-bahan untuk prakarya</li>
             <li>Dan masih banyak lagi...</li>
+        </ul>
+
     </div>
 
     <div class="card" id="pesan">
         <h2>Form Pemesanan</h2>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             <input type="text" name="nama" placeholder="Nama" required><br><br>
             <input type="text" name="produk" placeholder="Jenis Produk" required><br><br>
             <input type="number" name="jumlah" placeholder="Jumlah" required><br><br>
+            <input type="file" name="file" accept=".pdf,.doc,.docx,.xls,.xlsx"><br><br>
             <button type="submit" name="kirim">Pesan Sekarang</button>
         </form>
 
-        <?php
+ <?php
         if(isset($_POST['kirim'])){
             $nama = $_POST['nama'];
             $produk = $_POST['produk'];
             $jumlah = $_POST['jumlah'];
 
-            echo "<p>Terima kasih <b>$nama</b>, pesanan <b>$produk</b> sebanyak <b>$jumlah</b> sedang diproses.</p>";
+            $fileName = $_FILES['file']['name'];
+            $tmpName = $_FILES['file']['tmp_name'];
+            $fileSize = $_FILES['file']['size'];
+
+            // Format yang diizinkan
+            $allowedExt = ['pdf','doc','docx','xls','xlsx'];
+            $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            if(in_array($ext, $allowedExt)){
+                if($fileSize < 10000000){ // max 10MB
+                    $newName = time() . '_' . $fileName;
+                    $uploadPath = $uploadDir . $newName;
+
+                    if(move_uploaded_file($tmpName, $uploadPath)){
+                        echo "<p>Terima kasih <b>$nama</b>, pesanan <b>$produk</b> sebanyak <b>$jumlah</b> berhasil dikirim.</p>";
+                        echo "<p>File berhasil diupload: <a href='$uploadPath' target='_blank'>Download File</a></p>";
+                    } else {
+                        echo "<p style='color:red;'>Gagal upload file!</p>";
+                    }
+                } else {
+                    echo "<p style='color:red;'>Ukuran file terlalu besar (max 10MB)</p>";
+                }
+            } else {
+                echo "<p style='color:red;'>Format file tidak didukung! Gunakan PDF, Word, atau Excel.</p>";
+            }
         }
         ?>
     </div>
