@@ -1,7 +1,9 @@
-<$uploadDir = 'uploads/'; 
+<?php 
+$uploadDir = 'uploads/'; 
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
-}?>
+}
+?>
 <?php
 // index.php - Website sederhana perusahaan printing
 ?>
@@ -89,7 +91,7 @@ if (!is_dir($uploadDir)) {
             $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
             if(in_array($ext, $allowedExt)){
-                if($fileSize < 10000000){ // max 10MB
+                if($fileSize < 1000000){ // Maks 10MB
                     $newName = time() . '_' . $fileName;
                     $uploadPath = $uploadDir . $newName;
 
@@ -100,7 +102,7 @@ if (!is_dir($uploadDir)) {
                         echo "<p style='color:red;'>Gagal upload file!</p>";
                     }
                 } else {
-                    echo "<p style='color:red;'>Ukuran file terlalu besar (max 10MB)</p>";
+                    echo "<p style='color:red;'>Ukuran file terlalu besar (max 1MB)</p>";
                 }
             } else {
                 echo "<p style='color:red;'>Format file tidak didukung! Gunakan PDF, Word, atau Excel.</p>";

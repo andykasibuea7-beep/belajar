@@ -1,0 +1,19 @@
+USE printing;
+
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    produk VARCHAR(100),
+    jumlah INT,
+    file VARCHAR(255),
+    status VARCHAR(50) DEFAULT 'Diproses',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(255)
+);
+
+INSERT INTO admin (username, password) VALUES ('admin', MD5('admin123'));
