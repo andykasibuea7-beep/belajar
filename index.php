@@ -1,126 +1,108 @@
-<?php 
-$uploadDir = 'uploads/'; 
-if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0755, true);
-}
-?>
-<?php
-// index.php - Website sederhana perusahaan printing
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berry Printing - Jasa Percetakan</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   
     <style>
-        body {font-family: Arial; margin:0; background:#f4f4f4;}
-        header {background:#1e3a8a; color:white; padding:20px; text-align:center;}
-        nav {background:#111; padding:10px; text-align:center;}
-        nav a {color:white; margin:0 15px; text-decoration:none;}
-        nav a:hover {color:yellow;}
-        .container {padding:20px;}
-        .card {background:white; padding:15px; margin:10px 0; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);} 
-        footer {background:#1e3a8a; color:white; text-align:center; padding:10px; margin-top:20px;}
-        button {background:#1e3a8a; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;}
-        button:hover {background:#2563eb;}
+        body { background-color: #f8f9fa; }
+        /* Header dengan gradien agar lebih modern */
+        header { 
+            background: linear-gradient(135deg, #0d6efd 0%, #004dbb 100%); 
+            color: white; 
+            padding: 50px 0; 
+            text-align: center; 
+        }
+        .card { border: none; transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .logo-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Berry Printing</h1>
-    <p>Solusi Percetakan Profesional</p>
+<header class="mb-4">
+    <div class="container">
+        <img src="logoterbaruberry.png" alt="Logo Berry" class="logo-img rounded-circle border border-white border-3">
+        <h1 class="display-4 fw-bold">Berry Printing</h1>
+        <p class="lead">Solusi Percetakan Profesional & Terpercaya</p>
+    </div>
 </header>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#layanan">Layanan</a>
-    <a href="#pesan">Pesan</a>
-    <a href="#kontak">Kontak</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-4 shadow">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">BERRY</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav me-auto">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#layanan">Layanan</a>
+                <a class="nav-link" href="pesanan.php">Pesan</a>
+                <a class="nav-link" href="#kontak">Kontak</a>
+            </div>
+            <a href="login.php" class="btn btn-outline-light btn-sm">Admin Login</a>
+        </div>
+    </div>
 </nav>
 
 <div class="container">
-    <div class="card">
-        <h2>Tentang Kami</h2>
-        <p>Kami menyediakan jasa printingan yang berkualitas tinggi dan layanan pelanggan yang terbaik.</p>
-    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow-sm p-4 mb-4">
+                <h2 class="border-bottom pb-2">Tentang Kami</h2>
+                <p class="text-muted">Kami menyediakan jasa percetakan dengan kualitas tinggi, menggunakan mesin terbaru untuk hasil warna yang tajam dan layanan pelanggan yang prima.</p>
+            </div>
 
-    <div class="card" id="layanan">
-        <h2>Layanan Kami</h2>
-        <ul>
-            <li>Print Dokumen</li>
-            <li>Print Kertas A3</li>
-            <li>Kartu Nama</li>
-            <li>Jilid</li>
-            <li>Desain Grafis</li>
-            <li>Print Foto</li>
-            <li>Dan masih banyak lagi...</li>
-        </ul>
-        <h2> Barang produk yang kami sediakan</h2>
-        <ul>
-            <li>Alat-alat tulis Mahasiswa</li>
-            <li>Alat Praktikum</li>
-            <li>Bahan-bahan untuk prakarya</li>
-            <li>Dan masih banyak lagi...</li>
-        </ul>
+            <div class="card shadow-sm p-4 mb-4" id="layanan">
+                <h2 class="border-bottom pb-2">Layanan & Produk</h2>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <h5 class="text-primary">Jasa Print</h5>
+                        <ul class="list-unstyled">
+                            <li>✓ Print Dokumen & A3</li>
+                            <li>✓ Kartu Nama & ID Card</li>
+                            <li>✓ Jilid Skripsi & Hardcover</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="text-primary">Alat & Bahan</h5>
+                        <ul class="list-unstyled">
+                            <li>✓ Alat Tulis Kantor (ATK)</li>
+                            <li>✓ Bahan Prakarya Lengkap</li>
+                            <li>✓ Kertas Foto & Sticker</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    </div>
-
-    <div class="card" id="pesan">
-        <h2>Form Pemesanan</h2>
-        <form method="POST" enctype="multipart/form-data">
-            <input type="text" name="nama" placeholder="Nama" required><br><br>
-            <input type="text" name="produk" placeholder="Jenis Produk" required><br><br>
-            <input type="number" name="jumlah" placeholder="Jumlah" required><br><br>
-            <input type="file" name="file" accept=".pdf,.doc,.docx,.xls,.xlsx"><br><br>
-            <button type="submit" name="kirim">Pesan Sekarang</button>
-        </form>
-
- <?php
-        if(isset($_POST['kirim'])){
-            $nama = $_POST['nama'];
-            $produk = $_POST['produk'];
-            $jumlah = $_POST['jumlah'];
-
-            $fileName = $_FILES['file']['name'];
-            $tmpName = $_FILES['file']['tmp_name'];
-            $fileSize = $_FILES['file']['size'];
-
-            // Format yang diizinkan
-            $allowedExt = ['pdf','doc','docx','xls','xlsx'];
-            $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
-            if(in_array($ext, $allowedExt)){
-                if($fileSize < 1000000){ // Maks 10MB
-                    $newName = time() . '_' . $fileName;
-                    $uploadPath = $uploadDir . $newName;
-
-                    if(move_uploaded_file($tmpName, $uploadPath)){
-                        echo "<p>Terima kasih <b>$nama</b>, pesanan <b>$produk</b> sebanyak <b>$jumlah</b> berhasil dikirim.</p>";
-                        echo "<p>File berhasil diupload: <a href='$uploadPath' target='_blank'>Download File</a></p>";
-                    } else {
-                        echo "<p style='color:red;'>Gagal upload file!</p>";
-                    }
-                } else {
-                    echo "<p style='color:red;'>Ukuran file terlalu besar (max 1MB)</p>";
-                }
-            } else {
-                echo "<p style='color:red;'>Format file tidak didukung! Gunakan PDF, Word, atau Excel.</p>";
-            }
-        }
-        ?>
-    </div>
-
-    <div class="card" id="kontak">
-        <h2>Kontak</h2>
-        <p>Email: sainaadongdo@gmail.com</p>
-        <p>Telp: 085768733097</p>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4 bg-dark text-white" id="kontak">
+                <h4 class="mb-3">Hubungi Kami</h4>
+                <p class="small mb-2">
+                    <strong>Email:</strong><br>
+                    sainaadongdo@gmail.com
+                </p>
+                <p class="small mb-3">
+                    <strong>WhatsApp:</strong><br>
+                    085768733097
+                </p>
+                <hr>
+                <p class="small text-secondary">Buka: 24 Jam, Kecuali Ada Kendala Teknis</p>
+            </div>
+        </div>
     </div>
 </div>
 
-<footer>
-    <p>© 2026 Berry Printing</p>
+<footer class="text-center py-4 mt-5 border-top bg-white">
+    <p class="mb-0 text-muted">© 2026 **Berry Printing** - All Rights Reserved</p>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
